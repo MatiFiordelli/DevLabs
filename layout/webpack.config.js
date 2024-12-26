@@ -57,6 +57,11 @@ module.exports = (_, argv) => ({
           loader: "babel-loader",
         },
       },
+      { 
+        test: /\.svg$/, 
+        issuer: /\.[js|ts]x?$/,
+        use: ["@svgr/webpack", "url-loader"], 
+      },
     ],
   },
 

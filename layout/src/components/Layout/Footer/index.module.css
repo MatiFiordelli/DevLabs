@@ -1,0 +1,105 @@
+.footer {
+  background-color: #557bc8;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 1rem;
+  font-size: clamp(15px, 1.5vw, 60px);
+  font-variant: all-small-caps;
+  width: 100vw;
+  position: relative;
+  bottom: 0;
+}
+.footer .footer__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+}
+.footer .footer__content .left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 0.5;
+}
+.footer .footer__content .left-section .left-section__title {
+  font-size: 1.2em;
+}
+.footer .footer__content .left-section .left-section__content {
+  color: #000;
+  margin: 0;
+  margin-bottom: 1em;
+}
+.footer .footer__content .right-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 0.5;
+  gap: 10%;
+}
+.footer .footer__content .right-section .right-section__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0em;
+}
+.footer .footer__content .right-section .right-section__content .right-section__telefone {
+  font-size: 0.9em;
+  margin: 0;
+}
+.footer .footer__content .right-section .right-section__content .right-section__address {
+  font-size: 0.9em;
+  margin: 0;
+}
+.footer .footer__copyright {
+  background-color: #2a4a9e;
+  color: #dcdbe1;
+  font-size: 0.8em;
+  margin: 0;
+  padding: 1rem 0;
+  text-align: center;
+  width: 100vw;
+}
+.footer .footer__copyright a {
+  color: #FFF;
+  cursor: pointer;
+  font-style: italic;
+  padding-left: 1ch;
+  transition: 500ms;
+}
+.footer .footer__copyright a:hover {
+  color: #555555;
+}
+.footer .footer__copyright a:link {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 640px) {
+  .footer {
+    text-align: center;
+  }
+  .footer .footer__content {
+    flex-direction: column;
+  }
+  .footer .footer__content .left-section {
+    margin-bottom: 1rem;
+  }
+  .footer .footer__content .left-section p {
+    width: 100%;
+    margin: 0.5rem;
+  }
+  .footer .footer__content .right-section {
+    margin-bottom: 1rem;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .footer .footer__content {
+    padding: 50px;
+  }
+}/*# sourceMappingURL=index.module.css.map */

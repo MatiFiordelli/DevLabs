@@ -5,7 +5,7 @@ import './index.css'
 import Layout from './components/Layout'
 
 const App = () => (
-  <Layout children={undefined} />
+  <Layout children={null} />
 )
 const rootElement = document.getElementById('app')
 if (!rootElement) throw new Error('Failed to find the root element')

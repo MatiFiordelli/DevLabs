@@ -1,0 +1,67 @@
+.hamburger-button {
+  cursor: pointer;
+  display: flex;
+  place-content: center;
+  position: fixed;
+  transition: 500ms;
+  top: 1rem;
+  right: 1rem;
+  width: 4.5vw;
+  height: 4.5vw;
+  z-index: 3;
+}
+.hamburger-button .lineTop {
+  background-color: #15005a;
+  border-radius: 10px;
+  position: absolute;
+  height: 10%;
+  width: 75%;
+  top: 18%;
+  transform: none;
+  transition: 500ms all;
+}
+.hamburger-button .lineMiddle {
+  background-color: #15005a;
+  border-radius: 10px;
+  position: absolute;
+  height: 10%;
+  width: 75%;
+  top: 18%;
+  transform: none;
+  transition: 500ms all;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.hamburger-button .lineBottom {
+  background-color: #15005a;
+  border-radius: 10px;
+  position: absolute;
+  height: 10%;
+  width: 75%;
+  top: 18%;
+  transform: none;
+  transition: 500ms all;
+  top: auto;
+  bottom: 18%;
+}
+
+.hamburger-button--active .lineTop {
+  top: 28%;
+  transform: translateY(165%) rotate(45deg);
+  width: 50%;
+}
+.hamburger-button--active .lineMiddle {
+  opacity: 0;
+  width: 0;
+}
+.hamburger-button--active .lineBottom {
+  transform: translateY(-280%) rotateZ(-45deg);
+  width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+  .hamburger-button {
+    width: 50px;
+    height: 50px;
+  }
+}/*# sourceMappingURL=index.module.css.map */

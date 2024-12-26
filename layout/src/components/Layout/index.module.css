@@ -1,0 +1,18 @@
+.component-layout {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-content: space-between;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, rgb(237, 244, 255), #8fb1d9), repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.1) 10px, rgba(103, 98, 98, 0.1) 20px);
+  background-size: cover;
+  width: 100vw;
+}
+.component-layout .main-content {
+  width: inherit;
+  min-height: 100dvh;
+  overflow-x: inherit;
+}/*# sourceMappingURL=index.module.css.map */

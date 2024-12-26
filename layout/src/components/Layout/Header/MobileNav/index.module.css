@@ -1,0 +1,16 @@
+.mobile-nav {
+  display: flex;
+  font-size: clamp(15px, 1.5vw, 60px);
+  font-variant: all-small-caps;
+  justify-content: flex-end;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  width: 100vw;
+  height: 4.5vw;
+}
+
+@media only screen and (max-width: 768px) {
+  .mobile-nav {
+    height: 50px;
+  }
+}/*# sourceMappingURL=index.module.css.map */

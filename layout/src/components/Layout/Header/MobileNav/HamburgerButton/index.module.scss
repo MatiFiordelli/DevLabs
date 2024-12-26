@@ -1,0 +1,62 @@
+.hamburger-button{
+    cursor:pointer;
+    display: flex;
+    place-content: center;
+    position:fixed;
+    transition: 500ms;
+    top: 1rem;
+    right: 1rem;
+    width:4.5vw;
+    height:4.5vw;
+    z-index: 3;
+
+    @mixin lines {
+        background-color: #15005a;
+        border-radius: 10px;
+        position: absolute;
+        height: 10%;
+        width: 75%;
+        top:18%;
+        transform: none;
+        transition: 500ms all;
+    }
+
+    & .lineTop{
+        @include lines;
+    }
+    & .lineMiddle{
+        @include lines;
+        top:50%;
+        transform: translateY(-50%);
+    }
+    & .lineBottom{
+        @include lines;
+        top:auto;
+        bottom:18%;
+    }    
+}
+
+.hamburger-button--active{
+    $top:28%;
+    $width:50%;
+    & .lineTop{
+        top:$top;
+        transform: translateY(165%) rotate(45deg);
+        width: $width;
+    }
+    & .lineMiddle{
+        opacity: 0;
+        width: 0;
+    }
+    & .lineBottom{
+        transform: translateY(-280%) rotateZ(-45deg);
+        width: $width;
+    }
+}
+
+@media only screen and (max-width:768px){
+    .hamburger-button{
+        width:50px;
+        height:50px;
+    }
+}

@@ -1,0 +1,119 @@
+$background-color: #557bc8;
+$text-color: #000;
+$secondary-background-color: #2a4a9e;
+$secondary-text-color: #dcdbe1;
+$hover-color: #555555;
+
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+.footer {
+  background-color: $background-color;
+  color: $text-color;
+  @include flex(column, center, flex-start);
+  font-size: 1rem;
+  font-size: clamp(15px, 1.5vw, 60px);
+  font-variant: all-small-caps;
+  width: 100vw;
+  position:relative;
+  bottom:0; 
+
+  & .footer__content {
+    @include flex(row, flex-start, center);
+    padding: 20px;
+
+    & .left-section {
+      @include flex(column, flex-start, flex-start);
+      flex: 0.5;
+
+      & .left-section__title {
+        font-size: 1.2em;
+      }
+      & .left-section__content {
+        color: $text-color;
+        margin: 0;
+        margin-bottom: 1em;
+      }
+    }
+
+    & .right-section {
+      @include flex(row, center, flex-start);
+      flex: 0.5;
+      gap: 10%;
+
+      & .right-section__content {
+        @include flex(column, flex-start, center);
+        gap: 0em;
+
+        & .right-section__telefone{
+          font-size: 0.9em;
+          margin: 0;
+        }
+        & .right-section__address{
+          font-size: 0.9em;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  & .footer__copyright {
+    background-color: $secondary-background-color;
+    color: $secondary-text-color;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 1rem 0;
+    text-align: center;
+    width: 100vw;
+
+    & a {
+      color: #FFF;
+      cursor: pointer;
+      font-style: italic;
+      padding-left: 1ch;
+      transition: 500ms;
+
+      &:hover {
+        color: $hover-color;
+      }
+      &:link{
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .footer {
+    text-align: center;
+
+    .footer__content {
+      flex-direction: column;
+
+      & .left-section {
+        margin-bottom: 1rem;
+
+        & p{
+            width: 100%;
+            margin: 0.5rem;
+        }
+      }
+
+      & .right-section {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .footer {
+    & .footer__content {
+      padding: 50px;
+    }
+  }
+}
