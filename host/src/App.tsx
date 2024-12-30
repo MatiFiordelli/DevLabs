@@ -1,8 +1,8 @@
+import 'tailwindcss/tailwind.css';
 import React, { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 
-import './index.scss'
-import 'tailwindcss/tailwind.css';
+import './index.css'
 
 const Content = lazy(() => import('content/Content'))
 const Session = lazy(() => import('content/Session'))

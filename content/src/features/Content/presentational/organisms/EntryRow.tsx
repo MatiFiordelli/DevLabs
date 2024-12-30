@@ -31,7 +31,7 @@ export default function EntryRow() {
 								? localEntry.item
 								: entry.item
 						}
-						classNames="p-3 max-w-[75%] border-0 outline-none"
+						classNames="p-3 max-w-[75%] border-0 outline-none bg-transparent"
 						placeholder={"You need to enter an item"}
 						title={"Item"}
 						type={"text"}

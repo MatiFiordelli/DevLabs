@@ -19,10 +19,10 @@ export default function TodoListComponent() {
 				<ItemEntry />
 			</Form>
 
-			<ul className="flex flex-col gap-0 w-[-webkit-fill-available] mt-2 overflow-hidden">
+			<ul className="flex flex-col gap-2 w-[-webkit-fill-available] mt-2 overflow-hidden">
 				{entriesData?.map((entry: EntryType, i: number) => (
 					<li
-						className="flex justify-between border-t-2 w-full"
+						className="flex justify-center gap-2 border-t-2 w-full"
 						key={entry.item + Math.floor(Math.random() * 100).toString()}
 					>
 						<EntryRowContext.Provider value = {{i, entry}}>

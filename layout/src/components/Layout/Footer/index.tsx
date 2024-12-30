@@ -9,7 +9,7 @@ export default function Footer() {
 				<div className={styles['left-section']}>
 					<p className={styles['left-section__title']}>DevLabs ToDo App</p>
 					<p className={styles['left-section__content']}>
-						Organiza tu vida, un paso a la vez. Nuestra aplicación de ToDo está diseñada para ayudarte a mantenerte al día con tus tareas y alcanzar tus metas. Ya sea que estés gestionando proyectos personales o profesionales, nuestra herramienta te ofrece la flexibilidad y funcionalidad que necesitas.
+						Organize your life, one step at a time. Our ToDo application is designed to help you stay on top of your tasks and achieve your goals. Whether you're managing personal or professional projects, our tool offers the flexibility and functionality you need.
 					</p>
 
 					
@@ -18,10 +18,10 @@ export default function Footer() {
 				<div className={styles['right-section']}>
 					<div className={styles['right-section__content']}>
 						<p className={styles['right-section__telefone']}>
-							Teléfono: +1 234 567 890
+							Telephone: +1 234 567 890
 							</p>
 						<p className={styles['right-section__address']}>
-							Dirección: Calle 123, Rafaela, Santa Fe
+							Address: 123 Street, Rafaela, Santa Fe
 						</p>
 					</div>
 				</div>
