@@ -79,6 +79,9 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        tailwindcss: {
+          singleton: true,
+        }
       },
     }),
     new HtmlWebPackPlugin({

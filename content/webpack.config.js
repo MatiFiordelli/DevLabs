@@ -66,7 +66,8 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {
-        "./Content": "./src/components/Content/index.tsx",
+        "./Content": "./src/features/Content/containers/TodoContainer.tsx",
+        "./Session": "./src/features/Session/containers/SessionContainer.tsx",
       },
       shared: {
         ...deps,
@@ -78,6 +79,9 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        tailwindcss: {
+          singleton: true,
+        }
       },
     }),
     new HtmlWebPackPlugin({

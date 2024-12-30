@@ -2,15 +2,17 @@ import React, { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 
 import './index.scss'
+import 'tailwindcss/tailwind.css';
 
 const Content = lazy(() => import('content/Content'))
+const Session = lazy(() => import('content/Session'))
 const Layout = lazy(() => import('layout/Layout'))
 
 const App = () => (
   <>
     <Suspense fallback={<div>Loading...</div>}>
       <Layout>
-        {/* <Content /> */}
+        <Content />
       </Layout>
     </Suspense>
   </>

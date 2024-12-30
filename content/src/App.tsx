@@ -1,11 +1,13 @@
+import 'tailwindcss/tailwind.css';
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import './index.scss'
-import Content from './components/Content'
-import Session from './components/Session'
+import './index.css'
 
-const App = () => <Session />
+import SessionContainer from './features/Session/containers/SessionContainer'
+import TodoContainer from './features/Content/containers/TodoContainer'
+
+const App = () => <></>
 
 const rootElement = document.getElementById('app')
 if (!rootElement) throw new Error('Failed to find the root element')
