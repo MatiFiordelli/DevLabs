@@ -68,7 +68,9 @@ module.exports = (_, argv) => ({
         layout: "layout@http://localhost:3001/remoteEntry.js",
         content: "content@http://localhost:3002/remoteEntry.js",
       },
-      exposes: {},
+      exposes: {
+        "./useRedux": "./src/hooks/useRedux",
+      },
       shared: {
         ...deps,
         react: {
