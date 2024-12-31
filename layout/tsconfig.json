@@ -25,6 +25,7 @@
     "typeRoots": ["./node_modules/@types", "./src/models/declarations", "./src/models/interfaces"]
   },
   "include": [
+    "declarations.d.ts",
     "src/**/*" // *** The files TypeScript should type check ***
   ],
   "exclude": ["node_modules", "build", "dist"]

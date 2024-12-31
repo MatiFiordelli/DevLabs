@@ -29,7 +29,12 @@ export default function NavList({
 				onClick={(e) => e.stopPropagation()}
 			>
 				<ul className={styles["nav-list__ul"]}>
-					<li data-text="LOGIN">LOGIN</li>
+					<li data-text="LOGIN" onClick={handleClickCloseNavList}>
+						HOME
+					</li>
+					<li data-text="LOGIN" onClick={handleClickCloseNavList}>
+						LOGIN
+					</li>
 				</ul>
 			</nav>
 		</section>
