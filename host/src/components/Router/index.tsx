@@ -1,6 +1,6 @@
 import React, { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { pathroutes } from '../../utils/helpers/pathroutes'
+import { pathRoutes } from '../../utils/helpers/pathRoutes'
 import Error404 from '../Error404'
 
 const Content = lazy(() => import('content/Content'))
@@ -10,8 +10,8 @@ export default function Router() {
     
     return (
         <Routes>
-            <Route path={pathroutes.home} element={ <Content /> } />
-            <Route path={pathroutes.login} element={ <Session /> } />
+            <Route path={pathRoutes.home.path} element={ <Content /> } />
+            <Route path={pathRoutes.login.path} element={ <Session /> } />
 
             <Route path={"*"}  element={ <Error404 /> } />
         </Routes>

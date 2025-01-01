@@ -69,7 +69,7 @@ module.exports = (_, argv) => ({
         content: "content@http://localhost:3002/remoteEntry.js",
       },
       exposes: {
-        "./useRedux": "./src/hooks/useRedux",
+        "./pathRoutes": "./src/utils/helpers/pathRoutes.ts",
       },
       shared: {
         ...deps,

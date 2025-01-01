@@ -1,1 +1,1 @@
-declare module "host/useRedux"
+declare module "host/pathRoutes"

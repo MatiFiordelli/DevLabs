@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PropsHamburgerButton } from "../../../../../models/interfaces/MobileNav.ts";
 import styles from "./index.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function NavList({
 	isActiveHamburgerButton,
 	setIsActiveHamburgerButton,
 }: PropsHamburgerButton) {
 
-	const handleClickCloseNavList = () => {
+	const [pathRoutes, setpathRoutes] = useState(null)
+	const navigate = useNavigate()
+	
+	useEffect(()=>{
+		import('host/pathRoutes').then((module) => {
+			setpathRoutes(module.pathRoutes)
+		})
+	},[])
+
+	const handleClickCloseNavList = (route: string) => {
 		setIsActiveHamburgerButton(!isActiveHamburgerButton)
+
+		if(route!=="") navigate(route)
 	}
 
 	return (
@@ -18,7 +30,7 @@ export default function NavList({
 					? styles["nav-container-effect-active"]
 					: styles["nav-container-effect-inactive"]
 			}`}
-			onClick={handleClickCloseNavList}
+			onClick={() => handleClickCloseNavList("")}
 		>
 			<nav
 				className={`${styles["nav-list"]} ${
@@ -29,12 +41,22 @@ export default function NavList({
 				onClick={(e) => e.stopPropagation()}
 			>
 				<ul className={styles["nav-list__ul"]}>
-					<li data-text="LOGIN" onClick={handleClickCloseNavList}>
-						HOME
-					</li>
-					<li data-text="LOGIN" onClick={handleClickCloseNavList}>
-						LOGIN
-					</li>
+					{pathRoutes && Object.values(pathRoutes).map((e, i) => {
+						const route = e as {name:string, path: string}
+
+						return (
+							<li 
+								key={route.name + i} 
+								data-text={route.name} 
+								aria-label={route.name}
+								role="link"
+								tabIndex={0}
+								onClick={() => handleClickCloseNavList((route.path))}
+							>
+								{route.name}
+							</li>
+						)}
+					)}
 				</ul>
 			</nav>
 		</section>
