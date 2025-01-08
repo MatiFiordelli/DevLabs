@@ -89,8 +89,9 @@
     .nav-list-container{
         & .nav-list{
             & .nav-list__ul{
-                top: 200px;
+                gap: 50px;
                 padding: 50px 0 0 50px;
+                top: 200px;
             }
         }
     }
