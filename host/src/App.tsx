@@ -8,21 +8,24 @@ import "./index.css";
 import Router from "./components/Router";
 import Spinner from "./components/Resources/Spinner";
 import { BrowserRouter } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 const Layout = lazy(() => import("layout/Layout"));
 
 function App() {
 
 	return (
-		<Provider store={store}>
-			<BrowserRouter>
+		<BrowserRouter>
+			<Provider store={store}>
 				<Suspense fallback={<Spinner />}>
 					<Layout>
-						<Router />
+						<AnimatePresence>
+							<Router />
+						</AnimatePresence>
 					</Layout>
 				</Suspense>
-			</BrowserRouter>
-		</Provider>
+			</Provider>
+		</BrowserRouter>
 	)
 };
 const rootElement = document.getElementById("app");
