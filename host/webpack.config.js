@@ -17,6 +17,10 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    hot: true,
     port: 3000,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, 'src')],
@@ -81,9 +85,21 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        "react-router-dom": {
+          singleton: true,
+        },
         tailwindcss: {
           singleton: true,
-        }
+        },
+        "framer-motion": {
+          singleton: true,
+        },
+        "redux": {
+          singleton: true,
+        },
+        "react-redux": {
+          singleton: true,
+        },
       },
     }),
     new HtmlWebPackPlugin({

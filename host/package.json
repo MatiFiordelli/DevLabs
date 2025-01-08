@@ -4,7 +4,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "build:start": "cd dist && PORT=3000 npx serve",
+    "build:start": "cd dist && PORT=3000 npx serve -s",
     "start": "webpack serve --mode development",
     "start:live": "webpack serve --mode development --live-reload --hot"
   },
@@ -38,6 +38,7 @@
   "dependencies": {
     "@nrwl/react": "^19.8.4",
     "@reduxjs/toolkit": "^2.5.0",
+    "framer-motion": "^11.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.2.0",
