@@ -46,7 +46,7 @@ export default function Input({
 					autoFocus={autoFocus}
 					onChange={typeof onChangeHandler === "function" ? (e) => onChangeHandler(e) : ()=>{} }
 					onKeyDown={typeof onKeyDownHandler === "function" ? (e) => onKeyDownHandler(e) : ()=>{} }
-					{...(value === "" ? {} : { value })}
+					value={value || ""}
 				/>
 			)}
 		</>

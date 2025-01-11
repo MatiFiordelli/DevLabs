@@ -1,4 +1,5 @@
 export interface ButtonType {
+	id?: string;
 	type?: "button" | "submit" | "reset";
 	text?: string | null;
 	textColor?: string;

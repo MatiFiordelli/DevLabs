@@ -2,6 +2,7 @@ import React from "react";
 import { ButtonType } from "../types";
 
 export default function Button({
+	id = Math.floor(Math.random() * 1000000).toString(),
 	type = "button",
 	text = null,
 	textColor = "#000",
@@ -19,6 +20,7 @@ export default function Button({
 		<>
 			{text && (				
 				<button
+					id={id}
 					type={type}
 					className={`border border-slate-400 rounded-full p-0 w-full d-grid m-auto justify-center items-center
 						${isDisabled ? "bg-gray-500" : ""} 
