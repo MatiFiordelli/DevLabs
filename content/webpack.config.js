@@ -17,6 +17,10 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    hot: true,
     port: 3002,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, 'src')],
@@ -64,10 +68,12 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "content",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        host: "host@http://localhost:3000/remoteEntry.js"
+      },
       exposes: {
-        "./Content": "./src/features/Content/containers/TodoContainer.tsx",
-        "./Session": "./src/features/Session/containers/SessionContainer.tsx",
+        "./Content": "./src/features/Content/containers/TodoContainer/index.tsx",
+        "./Session": "./src/features/Session/containers/SessionContainer/index.tsx",
       },
       shared: {
         ...deps,
@@ -79,9 +85,21 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        "react-router-dom": {
+          singleton: true,
+        },
         tailwindcss: {
           singleton: true,
-        }
+        },
+        "framer-motion": {
+          singleton: true
+        },
+        "redux": {
+          singleton: true,
+        },
+        "react-redux": {
+          singleton: true,
+        },
       },
     }),
     new HtmlWebPackPlugin({

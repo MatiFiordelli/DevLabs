@@ -1,0 +1,2 @@
+export const SETFORMDATA = "SETFORMDATA";
+export const SETFORMERROR = "SETFORMERROR";

@@ -74,6 +74,7 @@ module.exports = (_, argv) => ({
       },
       exposes: {
         "./pathRoutes": "./src/utils/helpers/pathRoutes.ts",
+        "./useVerifyToken": "./src/hooks/useVerifyToken.ts",
       },
       shared: {
         ...deps,
@@ -100,6 +101,9 @@ module.exports = (_, argv) => ({
         "react-redux": {
           singleton: true,
         },
+        "@reduxjs/toolkit": {
+          singleton: true,
+        }
       },
     }),
     new HtmlWebPackPlugin({
