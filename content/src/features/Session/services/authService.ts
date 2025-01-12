@@ -19,8 +19,8 @@ export const authService = async (
 			throw new Error(data.message);
 		}
 		
-		alert('Success!')
 		localStorage.setItem("token", data.token);		
+		alert('Success!')
         return "OK"
 	} catch (error) {
 		throw error;

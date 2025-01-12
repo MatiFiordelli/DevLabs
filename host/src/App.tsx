@@ -21,22 +21,34 @@ const MakeDispatchInsideProvider = () => {
 	//const [isValidToken, setIsValidToken] = useState<boolean | null>(null);
 	const dispatch = useDispatch();
 
-	const setGlobalStateIsLoggedIn = (e: CustomEvent<{isLoggedIn: boolean}>) => {
-		dispatch(setIsLoggedInAction(e.detail.isLoggedIn))
-	}
-
 	//First verification of token to do the first assignment of detail: isLoggedIn(boolean) in CustomEvent
 	/* useVerifyToken()
 		.then((res)=>{
 			if(res!==null) setIsValidToken(res)
 		}) */
 	
-	const { data: isValidToken } = useQuery({
+	const { data: isValidToken, refetch } = useQuery({
 		queryKey: ["key-verify-token"],
 		queryFn: () => verifyToken(),
-		enabled: true
+		enabled: false
 	})
 	
+	const setGlobalStateIsLoggedIn = (e: CustomEvent<{isLoggedIn: boolean}>) => {
+		refetch().then((result) => {
+		  const isValidToken = result.data; 
+		  if (e.detail.isLoggedIn === false) {
+			dispatch(setIsLoggedInAction(false));
+		  }
+		  if (e.detail.isLoggedIn === true && isValidToken !== undefined) {
+			dispatch(setIsLoggedInAction(isValidToken));
+		  }
+		});
+	  };
+	  
+
+	useEffect(()=>{
+		refetch()
+	},[])
 	
 	useEffect(()=>{
 		if (isValidToken !== undefined) {	

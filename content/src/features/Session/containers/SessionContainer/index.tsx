@@ -46,7 +46,16 @@ export default function SessionContainer() {
 		authService(entries, isLogIn ? urls.login : urls.signup)
 			.then((data) => {
 				if (data === "OK"){ 
-					navigate("/");
+					window.dispatchEvent(new CustomEvent(
+						'isLoggedInDetection', { 
+							detail: {
+								isLoggedIn: true
+							} 
+						}
+					))
+					setTimeout(() => {
+						navigate("/");
+					}, 300);
 				}
 			})
 			.catch((error) => {
@@ -60,13 +69,6 @@ export default function SessionContainer() {
 		if (pathname==='/login') setIsLogIn(true)
 		if (pathname==='/signup') setIsLogIn(false)
 
-		/* const isLoginCustomEvent = new CustomEvent(
-			'isLoginDetection', 
-			{ detail: {
-				isLoggedIn: true
-			} }
-		)
-		window.dispatchEvent(isLoginCustomEvent) */
 	},[])
 
 	return (
@@ -91,7 +93,7 @@ CASOS POSIBLES:
 -esta logueado, aparece logout, rutas disponibles, Ninguna. El Home es TODO APP
 */
 
-/*-------------------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------------------- !!!!!
 tiene q haber en el redux del host 2 estados generales compartidos:
 1-) isLogin: el cual se define en el useEffect del componente LogIn o SignUp.
              sirve para la UI, asi define layout y urls para el handler del form submit

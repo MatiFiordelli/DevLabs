@@ -3,12 +3,15 @@ import Header from "./Header";
 import Footer from "./Footer";
 import styles from './index.module.css'
 import { IsLoggedInContext } from "../../contexts";
+import { verifyToken } from "../../services/verifyToken";
 
 export default function Layout({children}: {children:React.ReactNode} ) {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
     const setGlobalStateIsLoggedIn = (e: CustomEvent<{isLoggedIn: boolean}>) => {
-        setIsLoggedIn(e.detail.isLoggedIn)
+        verifyToken().then((res)=>{
+            setIsLoggedIn(res)
+        })
 	}
 
     useEffect(()=>{
