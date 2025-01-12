@@ -1,1 +1,1 @@
-export const SETROUTE = "SETROUTE";
+export const SETISLOGGEDIN = "SETISLOGGEDIN";

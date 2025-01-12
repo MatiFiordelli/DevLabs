@@ -11,7 +11,7 @@
   "license": "MIT",
   "author": {
     "name": "Matias Fiordelli",
-    "email": "noemail@noemail.com"
+    "email": "name@email.com"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",

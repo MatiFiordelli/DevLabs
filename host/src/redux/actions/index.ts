@@ -1,6 +1,7 @@
-import { SETROUTE } from "../types";
+import { SETISLOGGEDIN } from "../types";
 
-export const setRoute = (payload: string) => ({
-    type: SETROUTE,
+export const setIsLoggedInAction = (payload: boolean) => ({
+    type: SETISLOGGEDIN,
     payload: payload
 })
+

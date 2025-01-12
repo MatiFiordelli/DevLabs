@@ -87,7 +87,7 @@ module.exports = (_, argv) => ({
         },
         "react-router-dom": {
           singleton: true,
-        },
+        }
       },
     }),
     new HtmlWebPackPlugin({

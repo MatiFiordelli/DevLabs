@@ -1,8 +1,8 @@
 import { combineReducers } from "redux"
-import setRouteReducer from "./setRouteReducer"
+import setIsLoggedInReducer from "./setIsLoggedInReducer"
 
 const reducer = combineReducers({
-    setRouteReducer
+    setIsLoggedInReducer,
 })
 
 export default reducer

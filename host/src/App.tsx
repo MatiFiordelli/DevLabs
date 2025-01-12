@@ -1,31 +1,87 @@
 import "tailwindcss/tailwind.css";
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect/* , useState */ } from "react";
 import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux"
-import store from "./redux/store";
+import { Provider, useDispatch } from "react-redux"
+import hostStore from "./redux/store";
 import "./index.css";
 
 import Router from "./components/Router";
 import Spinner from "./components/Resources/Spinner";
 import { BrowserRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+//import useVerifyToken from "./hooks/useVerifyToken";
+import { setIsLoggedInAction } from "./redux/actions";
+import { queryClient } from "./react-query";
+import { QueryClientProvider, useQuery } from "@tanstack/react-query";
+import { verifyToken } from "./services/verifyToken";
 
 const Layout = lazy(() => import("layout/Layout"));
+
+const MakeDispatchInsideProvider = () => {
+	//const [isValidToken, setIsValidToken] = useState<boolean | null>(null);
+	const dispatch = useDispatch();
+
+	const setGlobalStateIsLoggedIn = (e: CustomEvent<{isLoggedIn: boolean}>) => {
+		dispatch(setIsLoggedInAction(e.detail.isLoggedIn))
+	}
+
+	//First verification of token to do the first assignment of detail: isLoggedIn(boolean) in CustomEvent
+	/* useVerifyToken()
+		.then((res)=>{
+			if(res!==null) setIsValidToken(res)
+		}) */
+	
+	const { data: isValidToken } = useQuery({
+		queryKey: ["key-verify-token"],
+		queryFn: () => verifyToken(),
+		enabled: true
+	})
+	
+	
+	useEffect(()=>{
+		if (isValidToken !== undefined) {	
+			window.addEventListener(
+				'isLoggedInDetection', 
+				((e: CustomEvent<{isLoggedIn: boolean}>) => setGlobalStateIsLoggedIn(e as CustomEvent)) as EventListener
+			)
+			window.dispatchEvent(new CustomEvent(
+				'isLoggedInDetection', { 
+					detail: {
+						isLoggedIn: isValidToken
+					} 
+				}
+			))
+			
+			return () => {
+				window.removeEventListener(
+					'isLoggedInDetection', 
+					((e: CustomEvent<{isLoggedIn: boolean}>)=>setGlobalStateIsLoggedIn(e as CustomEvent)) as EventListener
+				)
+			}
+		}
+
+	},[isValidToken])
+
+	return <></>
+}
 
 function App() {
 
 	return (
-		<BrowserRouter>
-			<Provider store={store}>
-				<Suspense fallback={<Spinner />}>
-					<Layout>
-						<AnimatePresence>
-							<Router />
-						</AnimatePresence>
-					</Layout>
-				</Suspense>
-			</Provider>
-		</BrowserRouter>
+		<QueryClientProvider client={queryClient}>
+			<BrowserRouter>
+				<Provider store={hostStore}>
+					<Suspense fallback={<Spinner />}>
+						<MakeDispatchInsideProvider />
+						<Layout>
+							<AnimatePresence>
+								<Router />
+							</AnimatePresence>
+						</Layout>
+					</Suspense>
+				</Provider>
+			</BrowserRouter>
+		</QueryClientProvider>
 	)
 };
 const rootElement = document.getElementById("app");

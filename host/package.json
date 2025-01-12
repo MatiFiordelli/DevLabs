@@ -10,8 +10,8 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
+    "name": "Matias Fiordelli",
+    "email": "name@email.com"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -38,6 +38,7 @@
   "dependencies": {
     "@nrwl/react": "^19.8.4",
     "@reduxjs/toolkit": "^2.5.0",
+    "@tanstack/react-query": "^5.64.0",
     "framer-motion": "^11.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
