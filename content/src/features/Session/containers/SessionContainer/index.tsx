@@ -28,12 +28,9 @@ function MakeDispatchInsideProvider({
 
 export default function SessionContainer() {
 	const { pathname } = useLocation()
-	
-	//poner ese estado en redux y que se active en el useeffect [] recien montado
 	const [isLogIn, setIsLogIn] = useState(true);
-
-	const navigate = useNavigate();
 	const [authError, setAuthError] = useState("");
+	const navigate = useNavigate();
 
 	const handleSigninSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();

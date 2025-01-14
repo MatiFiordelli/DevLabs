@@ -1,22 +1,25 @@
 import { Dispatch, FormEvent, SetStateAction } from "react";
 
 export interface EntryType {
-	item: string;
+	entryText: string;
+	updatedText?: string;
 	isEditButtonActive?: boolean;
 	i?: number;
-	inputElement?: HTMLInputElement;
+	_id?: string;
 }
 
-export interface EntryRowType {
-	i: number;
+export interface EntryRowContextType {
 	entry: EntryType;
+	i: number;
 }
 
 export interface TodoContextType {
-	onSubmitFormTodoItem: (e: FormEvent<HTMLFormElement>) => void;
-	entriesData: EntryType[];
-	onDeleteItem: (i: number) => void;
-	onEditItem: (i: number, inputElement?: HTMLInputElement) => void;
+	onSubmitFormTodoEntry: (e: FormEvent<HTMLFormElement>) => void;
+	todoEntriesList: EntryType[];
+	onDeleteEntry: (i: number) => void;
+	onEditEntry: (i: number, inputElement?: string) => void;
 	localEntry: EntryType;
 	setLocalEntry: Dispatch<SetStateAction<EntryType | null>>;
+	shouldAnimateEntries: boolean;
+	setShouldAnimateEntries: Dispatch<SetStateAction<boolean>>;
 }

@@ -43,7 +43,7 @@ const MakeDispatchInsideProvider = () => {
 			dispatch(setIsLoggedInAction(isValidToken));
 		  }
 		});
-	  };
+	};
 	  
 
 	useEffect(()=>{

@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { TodoContextType, EntryRowType } from "../types";
+import { TodoContextType, EntryRowContextType } from "../types";
 
 export const TodoContext = createContext<TodoContextType | null>(null);
-export const EntryRowContext = createContext<EntryRowType | null>(null);
+export const EntryRowContext = createContext<EntryRowContextType | null>(null);

@@ -5,7 +5,7 @@ export const queryClient = new QueryClient({defaultOptions: {
 		refetchOnMount: true,
 		refetchOnReconnect: true,
 		refetchOnWindowFocus: true,
-        refetchInterval: 7200000
+        refetchInterval: 7200000,
         
         /* staleTime: 60000, //time during which no refetch is necessary */
         /* refetchInterval: 36000000, //1 hour */
