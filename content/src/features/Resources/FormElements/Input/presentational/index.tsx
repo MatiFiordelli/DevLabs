@@ -26,6 +26,7 @@ export default function Input({
 					ref={inputRef}
 					className={`border border-slate-400 p-3 sm:w-[inherit] rounded-full mb-0 w-[inherit] text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-4xl ${classNames}`}
 					type={type}
+					data-testid={id}
 					id={id}
 					name={id}
 					placeholder={placeholder}

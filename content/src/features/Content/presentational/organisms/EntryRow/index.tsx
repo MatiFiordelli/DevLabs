@@ -12,7 +12,6 @@ export default function EntryRow() {
 	} = useCustomContext(TodoContext as Context<TodoContextType>);
 
 	const {
-		i,
 		entry
 	} = useCustomContext(EntryRowContext as Context<EntryRowContextType>);
 

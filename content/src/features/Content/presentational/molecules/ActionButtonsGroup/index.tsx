@@ -5,7 +5,7 @@ import { useCustomContext } from "../../../hooks/useCustomContext";
 import { EntryRowContext, TodoContext } from "../../../contexts";
 
 export default function ActionButtonsGroup() {
-	const { localEntry, setLocalEntry, onDeleteEntry, onEditEntry } =
+	const { localEntry, setLocalEntry, onDeleteEntry } =
 		useCustomContext(TodoContext as Context<TodoContextType>);
 
 	const { entry, i } = useCustomContext(

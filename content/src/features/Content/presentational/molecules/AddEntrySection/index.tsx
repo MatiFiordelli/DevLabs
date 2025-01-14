@@ -14,8 +14,6 @@ export default function AddEntrySection() {
 
 	const {
 		isMicActive,
-		transcript,
-		onChangeHandler,
 		toggleMicHandler,
 		clickAddButtonHandler,
 	} = useMic(localEntry, setLocalEntry);
@@ -56,6 +54,7 @@ export default function AddEntrySection() {
 			/>
 			<Button
 				type="submit"
+				id={"addButton"}
 				text={"➕"}
 				title={"Add button"}
 				textColor="#FFF"

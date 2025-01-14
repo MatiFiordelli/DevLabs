@@ -20,6 +20,7 @@ export default function Button({
 		<>
 			{text && (				
 				<button
+					data-testid={id}
 					id={id}
 					type={type}
 					className={`border border-slate-400 rounded-full p-0 w-full d-grid m-auto justify-center items-center
