@@ -37,13 +37,6 @@ export default function ActionButtonsGroup() {
 						buttonWidth="2.5rem"
 						buttonHeight="2.5rem"
 						onClickHandler={() => {
-							//cambiarvalor de isEditButtonActive a TRUE
-							//copiar valor de entry en update
-
-							//* mientras escribimos el update se modificara solo
-
-							//cuando apretemos de nuevo en este boton tiene que cambiar isEditButtonActive a FALSE
-							//y copiar el update en entry, previamente VALIDANDOLO
 
 							setLocalEntry({
 								...localEntry,
@@ -53,9 +46,6 @@ export default function ActionButtonsGroup() {
 										: localEntry.updatedText,
 								i: i,
 							});
-
-							//const inputElement = ev.target.parentNode.parentNode.firstChild;
-							//onEditEntry(i)
 						}}
 					/>
 				</div>

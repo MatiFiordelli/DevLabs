@@ -24,7 +24,7 @@ export default function TodoContainer() {
 		 return (entry.length>=3 && entry.length<=50)			
 	}
 
-	//modularizar las siguientes 3 funciones!!
+	
 	const onSubmitFormTodoEntry = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
@@ -124,7 +124,6 @@ export default function TodoContainer() {
 							.then((data)=>{
 								data.message === 'OK' && alert('Successfully updated!')
 
-								//setLocalEntry({...localEntry, entryText: "", i: -1})
 								return {
 									...entry,
 									entryText: localEntry?.updatedText as string, 
@@ -137,7 +136,6 @@ export default function TodoContainer() {
 							})
 					} 
 
-					//setLocalEntry({...localEntry, entryText: "", i: -1})
 					return {
 						...entry,
 						entryText: entry.isEditButtonActive ? localEntry?.updatedText as string : entry.entryText, 
