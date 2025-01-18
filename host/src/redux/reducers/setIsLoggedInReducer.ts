@@ -2,7 +2,7 @@ import { SETISLOGGEDIN } from "../types";
 import { SetIsLoggedInAction } from "../../types";
 
 const initState = {
-    isLoggedIn: false
+    isLoggedIn: null
 }
 
 export default function setIsLoggedInReducer(state=initState, action: SetIsLoggedInAction) {

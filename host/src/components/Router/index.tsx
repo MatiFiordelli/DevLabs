@@ -3,6 +3,7 @@ import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { pathRoutes } from "../../utils/helpers/pathRoutes";
 import Error404 from "../Error404";
 import { useSelector } from "react-redux";
+import Spinner from "../Resources/Spinner";
 
 const Content = lazy(() => import("content/Content"));
 const Session = lazy(() => import("content/Session"));
@@ -13,18 +14,20 @@ export default function Router() {
 		(state: { setIsLoggedInReducer: { isLoggedIn: boolean } }) =>
 			state.setIsLoggedInReducer.isLoggedIn
 	);
-	const [wait, setWait] = useState(false);
-
+	
+	//const [wait, setWait] = useState(false);
     //Debouncing to avoid rapid change of state in isLoggedIn
-	useEffect(() => {
+	/* useEffect(() => {
 		setTimeout(() => {
 			setWait(true);
 		}, 300);
-	}, []);
+	}, []); */
 
 	return (
 		<>
-			{wait && (
+			{(/* wait &&  */isLoggedIn === null) 
+			?( <Spinner />)
+			:(
 				<Routes location={location} key={location.pathname}>
 					<Route
 						path={pathRoutes.home.path}

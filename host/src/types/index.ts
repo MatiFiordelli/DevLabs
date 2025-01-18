@@ -1,4 +1,4 @@
 export interface SetIsLoggedInAction {
     type: string,
-    payload: boolean
+    payload: boolean | null
 }

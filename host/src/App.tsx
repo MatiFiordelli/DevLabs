@@ -27,24 +27,23 @@ const MakeDispatchInsideProvider = () => {
 			if(res!==null) setIsValidToken(res)
 		}) */
 	
-	const { data: isValidToken, refetch } = useQuery({
+	const { data: isValidToken, refetch, isFetching } = useQuery({
 		queryKey: ["key-verify-token"],
 		queryFn: () => verifyToken(),
 		enabled: false
 	})
-	
+
 	const setGlobalStateIsLoggedIn = (e: CustomEvent<{isLoggedIn: boolean}>) => {
 		refetch().then((result) => {
-		  const isValidToken = result.data; 
-		  if (e.detail.isLoggedIn === false) {
-			dispatch(setIsLoggedInAction(false));
-		  }
-		  if (e.detail.isLoggedIn === true && isValidToken !== undefined) {
-			dispatch(setIsLoggedInAction(isValidToken));
-		  }
+			const isValidToken = result.data; 
+			if (e.detail.isLoggedIn === false) {
+				dispatch(setIsLoggedInAction(false));
+			}
+			if (e.detail.isLoggedIn === true && isValidToken !== undefined) {
+				dispatch(setIsLoggedInAction(isValidToken));
+			}
 		});
 	};
-	  
 
 	useEffect(()=>{
 		refetch()
@@ -71,8 +70,12 @@ const MakeDispatchInsideProvider = () => {
 				)
 			}
 		}
-
+		
 	},[isValidToken])
+
+	useEffect(()=>{
+		isFetching && dispatch(setIsLoggedInAction(null));
+	},[isFetching])
 
 	return <></>
 }
