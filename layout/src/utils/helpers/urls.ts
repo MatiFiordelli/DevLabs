@@ -1,5 +1,5 @@
 const urls = {
-    "verify-token": "http://localhost:4000/api/auth/verify-token",
+    "verify-token": "https://dev-labs-microservices-user-auth.vercel.app/api/auth/verify-token",
 }
 
 export default urls

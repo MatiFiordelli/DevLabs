@@ -32,7 +32,7 @@ export default function TodoContainer() {
 			if(!isItARepeatedEntry(localEntry?.entryText as string)){
 				if (todoEntriesList && localEntry?.entryText) {
 
-					fetch('http://localhost:4001/api/todos', {
+					fetch('https://dev-labs-microservices-todo-crud.vercel.app/api/todos', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export default function TodoContainer() {
 	
 	const onDeleteEntry = (i: number) => {
 		if (todoEntriesList) {
-			fetch(`http://localhost:4001/api/todos/${todoEntriesList?.[i]._id}`, {
+			fetch(`https://dev-labs-microservices-todo-crud.vercel.app/api/todos/${todoEntriesList?.[i]._id}`, {
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json'
@@ -109,7 +109,7 @@ export default function TodoContainer() {
 				} else {
 					
 					if (entry.isEditButtonActive && entry.entryText!==localEntry?.updatedText) { 
-						fetch(`http://localhost:4001/api/todos/${entry._id}`, {
+						fetch(`https://dev-labs-microservices-todo-crud.vercel.app/api/todos/${entry._id}`, {
 							method: 'PUT',
 							headers: {
 								'Content-Type': 'application/json'
@@ -171,7 +171,7 @@ export default function TodoContainer() {
 
 	useEffect(()=>{
 		if (emailFromToken) {
-			fetch(`http://localhost:4001/api/todos?email=${emailFromToken}`, {
+			fetch(`https://dev-labs-microservices-todo-crud.vercel.app/api/todos?email=${emailFromToken}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'

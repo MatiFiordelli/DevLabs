@@ -1,4 +1,4 @@
 export const urls = {
-    login: "http://localhost:4000/api/auth/login",
-    signup: "http://localhost:4000/api/auth/signup"
+    login: "https://dev-labs-microservices-user-auth.vercel.app/api/auth/login",
+    signup: "https://dev-labs-microservices-user-auth.vercel.app/api/auth/signup"
 }
