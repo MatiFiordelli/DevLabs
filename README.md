@@ -1,6 +1,7 @@
 ToDoApp
 
-ToDoApp is a task management application that implements the MicroFrontends architecture using Module Federation. The application is divided into three main parts, which work together to provide a modular and scalable experience:
+ToDoApp is a task management application that implements the MicroFrontends architecture using Module Federation. 
+The application is divided into three main parts, which work together to provide a modular and scalable experience:
 
 Application Architecture
 
@@ -47,6 +48,7 @@ Host
 9. Tailwind CSS: A utility-first CSS framework for building custom designs.
 10. PostCSS: PostCSS is a tool for transforming CSS with plugins.
 11. Autoprefixer: A tool to add vendor prefixes to CSS automatically.
+12. Sourcetree: A free Git and Mercurial client for Windows and Mac. It simplifies how you interact with your repositories so you can focus on coding.
 
 
 Layout
@@ -75,13 +77,6 @@ General Technologies for the microfrontend
 12. Jest: A testing framework for JavaScript.
 13. Testing Library: It's a set of tools for testing user interactions in web applications.
 
-Design Patterns, Design Principles, Methodologies
-1. The Smart and The Dumb: A design pattern that separates logic-heavy "Smart" components from UI-focused "Dumb" components.
-2. Atomic Design: A methodology for creating scalable UI components by breaking them into atoms, molecules, organisms, templates, and pages.
-3. DRY Principle (Don't Repeat Yourself): This principle emphasizes reducing repetition of code or logic. Instead of duplicating code, you should abstract it into a single place and reuse it. This makes the code more maintainable and reduces the risk of errors.
-4. KISS Principle (Keep It Simple, Silly): This principle advocates for simplicity in design and implementation. The idea is to avoid unnecessary complexity and keep the code as straightforward as possible. Simple solutions are easier to understand, maintain, and debug.
-5. Single Responsibility Principle: This principle states that a class or module should have only one reason to change, meaning it should have only one job or responsibility. This makes the code more modular and easier to maintain.
-6. Open/Closed Principle: This principle suggests that software entities (like classes, modules, functions) should be open for extension but closed for modification. This means you should be able to add new functionality without changing existing code, typically achieved through inheritance or interfaces.
 
 Session
 State Management: Uses Redux for managing authentication state.
@@ -89,12 +84,33 @@ State Management: Uses Redux for managing authentication state.
 Content(ToDoApp)
 State Management: Utilizes Context API for managing local state.
 
+
 ##
+
+
+Design Patterns, Design Principles, Methodologies
+1. The Smart and The Dumb: A design pattern that separates logic-heavy "Smart" components from UI-focused "Dumb" components.
+2. Atomic Design: A methodology for creating scalable UI components by breaking them into atoms, molecules, organisms, templates, 
+and pages.
+3. DRY Principle (Don't Repeat Yourself): This principle emphasizes reducing repetition of code or logic. Instead of duplicating code, 
+you should abstract it into a single place and reuse it. This makes the code more maintainable and reduces the risk of errors.
+4. KISS Principle (Keep It Simple, Silly): This principle advocates for simplicity in design and implementation. The idea is to avoid 
+unnecessary complexity and keep the code as straightforward as possible. Simple solutions are easier to understand, maintain, and debug.
+5. Single Responsibility Principle: This principle states that a class or module should have only one reason to change, meaning it 
+should have only one job or responsibility. This makes the code more modular and easier to maintain.
+6. Open/Closed Principle: This principle suggests that software entities (like classes, modules, functions) should be open for extension 
+but closed for modification. This means you should be able to add new functionality without changing existing code, typically achieved 
+through inheritance or interfaces.
+
+
+##
+
 
 Installation
 Follow these steps to install and run the project locally:
 
 # Note: To use this app, you will first need to run the microservices todo-crud and user-auth
+# in caso of running it locally
    https://github.com/MatiFiordelli/DevLabs-Microservices.git
 
 
@@ -114,7 +130,8 @@ Host:
 4. Start the server:
    npm run build:start
 
-5. Access the App: The App will be available at http://localhost:3000
+5. Access the App: The App will be available at: 
+http://localhost:3000
 
 Layout:
 1. Change folder:
@@ -129,7 +146,8 @@ Layout:
 4. Start the server:
    npm run build:start
 
-5. The App will be available at http://localhost:3001 (but it will be used just by the host, internally)
+5. The App will be available at: 
+http://localhost:3001 (but it will be used just by the host, internally)
 
 Content:
 1. Change folder:
@@ -144,9 +162,12 @@ Content:
 4. Start the server:
    npm run build:start
 
-5. The App will be available at http://localhost:3002 (but it will be used just by the host, internally)
+5. The App will be available at: 
+http://localhost:3002 (but it will be used just by the host, internally)
+
 
 ##
+
 
 Running Tests
 This project uses Jest and Testing Library for testing. To run the tests, use the following command:
