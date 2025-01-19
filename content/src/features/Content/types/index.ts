@@ -22,4 +22,5 @@ export interface TodoContextType {
 	setLocalEntry: Dispatch<SetStateAction<EntryType | null>>;
 	shouldAnimateEntries: boolean;
 	setShouldAnimateEntries: Dispatch<SetStateAction<boolean>>;
+	isAddingNewRemoteEntry: boolean;
 }

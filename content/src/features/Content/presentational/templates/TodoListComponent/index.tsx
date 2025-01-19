@@ -8,6 +8,7 @@ import { useCustomContext } from '../../../hooks/useCustomContext';
 import { motion } from 'framer-motion';
 import { entriesVariant } from '../variants/entries.variant';
 import Spinner from '../../../../Resources/Spinner';
+import InnerSpinner from '../../../../Resources/Spinner/InnerSpinner';
 
 export default function TodoListComponent() {
   const {
@@ -15,6 +16,7 @@ export default function TodoListComponent() {
     todoEntriesList,
     shouldAnimateEntries,
     setShouldAnimateEntries,
+	isAddingNewRemoteEntry
   } = useCustomContext(TodoContext as Context<TodoContextType>);
 
   return (
@@ -70,6 +72,12 @@ export default function TodoListComponent() {
 						</EntryRowContext.Provider>
 					</motion.li>
 				))}
+				
+				{isAddingNewRemoteEntry &&
+					<li className="flex justify-center gap-2 border-t-2 w-full">
+						<InnerSpinner loadingText={"Adding new task.."} small={true} />
+					</li>
+				}
 			</ul>
 			</motion.section>
 		) 

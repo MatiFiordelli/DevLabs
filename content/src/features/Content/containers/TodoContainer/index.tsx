@@ -12,6 +12,7 @@ export default function TodoContainer() {
 		updatedText: "",
 		i: -1,
 	});
+	const [isAddingNewRemoteEntry, setIsAddingNewRemoteEntry] = useState(false);
 	const [shouldAnimateEntries, setShouldAnimateEntries] = useState(true);
 	const [emailFromToken, setEmailFromToken] = useState(null)
 	const {getErrorMessage} = useErrorMessages()
@@ -32,6 +33,7 @@ export default function TodoContainer() {
 			if(!isItARepeatedEntry(localEntry?.entryText as string)){
 				if (todoEntriesList && localEntry?.entryText) {
 
+					setIsAddingNewRemoteEntry(true)
 					fetch('https://dev-labs-microservices-todo-crud.vercel.app/api/todos', {
 						method: 'POST',
 						headers: {
@@ -56,9 +58,11 @@ export default function TodoContainer() {
 									_id: data.updatedDocument.tasks[entriesListLength-1]._id
 								},
 							]);
+							setIsAddingNewRemoteEntry(false)
 						})
 						.catch((err)=>{
 							console.log(err)
+							setIsAddingNewRemoteEntry(false)
 							alert('Unable to add entry. Try again in a few moments.')
 						})
 				}
@@ -208,7 +212,8 @@ export default function TodoContainer() {
 						localEntry,
 						setLocalEntry,
 						shouldAnimateEntries,
-						setShouldAnimateEntries
+						setShouldAnimateEntries,
+						isAddingNewRemoteEntry
 				}}
 				>
 					<TodoListComponent />
