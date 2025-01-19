@@ -25,7 +25,7 @@ Authentication Mechanism
 
 To determine if a user is logged in and authorized to use the ToDoApp, a Custom Event is used for communication between the MicroFrontends:
 
-The Custom Event is dispatched and resides in the browser, allowing MicroFrontends to detect login status through addEventListener.
+The Custom Event is dispatched and resides in the browser, allowing MicroFrontends to detect login status through addEventListener, and performing an authenticity verification.
 Upon login, a remote token verification is performed.
 Once authentication is successful, the token is stored in the localStorage for subsequent access and session management.
 The Host uses React Query to periodically send requests to the server, ensuring the token remains valid over time.
@@ -90,18 +90,19 @@ State Management: Utilizes Context API for managing local state.
 
 Design Patterns, Design Principles, Methodologies
 1. The Smart and The Dumb: A design pattern that separates logic-heavy "Smart" components from UI-focused "Dumb" components.
-2. Atomic Design: A methodology for creating scalable UI components by breaking them into atoms, molecules, organisms, templates, 
+2. Observer: An object (subject) automatically notifies multiple dependent objects (observers) about any changes in its state.
+3. Atomic Design: A methodology for creating scalable UI components by breaking them into atoms, molecules, organisms, templates, 
 and pages.
-3. DRY Principle (Don't Repeat Yourself): This principle emphasizes reducing repetition of code or logic. Instead of duplicating code, 
+4. DRY Principle (Don't Repeat Yourself): This principle emphasizes reducing repetition of code or logic. Instead of duplicating code, 
 you should abstract it into a single place and reuse it. This makes the code more maintainable and reduces the risk of errors.
-4. KISS Principle (Keep It Simple, Silly): This principle advocates for simplicity in design and implementation. The idea is to avoid 
+5. KISS Principle (Keep It Simple, Silly): This principle advocates for simplicity in design and implementation. The idea is to avoid 
 unnecessary complexity and keep the code as straightforward as possible. Simple solutions are easier to understand, maintain, and debug.
-5. Single Responsibility Principle: This principle states that a class or module should have only one reason to change, meaning it 
+6. Single Responsibility Principle: This principle states that a class or module should have only one reason to change, meaning it 
 should have only one job or responsibility. This makes the code more modular and easier to maintain.
-6. Open/Closed Principle: This principle suggests that software entities (like classes, modules, functions) should be open for extension 
+7. Open/Closed Principle: This principle suggests that software entities (like classes, modules, functions) should be open for extension 
 but closed for modification. This means you should be able to add new functionality without changing existing code, typically achieved 
 through inheritance or interfaces.
-
+8. BEM:naming convention for CSS classes that helps create reusable and maintainable components in web development.
 
 ##
 
