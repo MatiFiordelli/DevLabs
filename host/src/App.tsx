@@ -86,7 +86,7 @@ function App() {
 		<QueryClientProvider client={queryClient}>
 			<BrowserRouter>
 				<Provider store={hostStore}>
-					<Suspense fallback={<Spinner />}>
+					<Suspense fallback={<Spinner loadingText={"Loading.."} />}>
 						<MakeDispatchInsideProvider />
 						<Layout>
 							<AnimatePresence>

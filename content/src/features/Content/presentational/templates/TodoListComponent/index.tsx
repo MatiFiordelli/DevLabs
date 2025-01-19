@@ -1,47 +1,45 @@
-import React, { Context } from "react";
-import { Form } from "../../../../Resources/index";
-import { EntryType, TodoContextType } from "../../../types";
-import AddEntrySection from "../../molecules/AddEntrySection";
-import EntryRow from "../../organisms/EntryRow";
-import { EntryRowContext, TodoContext } from "../../../contexts";
-import { useCustomContext } from "../../../hooks/useCustomContext";
-import { motion } from "framer-motion";
-import { entriesVariant } from "../variants/entries.variant";
+import React, { Context } from 'react';
+import { Form } from '../../../../Resources/index';
+import { EntryType, TodoContextType } from '../../../types';
+import AddEntrySection from '../../molecules/AddEntrySection';
+import EntryRow from '../../organisms/EntryRow';
+import { EntryRowContext, TodoContext } from '../../../contexts';
+import { useCustomContext } from '../../../hooks/useCustomContext';
+import { motion } from 'framer-motion';
+import { entriesVariant } from '../variants/entries.variant';
+import Spinner from '../../../../Resources/Spinner';
 
 export default function TodoListComponent() {
-	const { 
-		onSubmitFormTodoEntry, 
-		todoEntriesList, 
-		shouldAnimateEntries,
-		setShouldAnimateEntries
-	} = 
-		useCustomContext(TodoContext as Context<TodoContextType>
-	);
+  const {
+    onSubmitFormTodoEntry,
+    todoEntriesList,
+    shouldAnimateEntries,
+    setShouldAnimateEntries,
+  } = useCustomContext(TodoContext as Context<TodoContextType>);
 
-	return (
-		<motion.section
-			className="w-[75%] sm:w-[50vw] h-auto d-flex content-start justify-items-center m-auto"
-			initial={{ opacity: 0 }}
-			animate={{
-				opacity: 1,
-				transition: {
+  return (
+    <>
+		{todoEntriesList.length > 0 ? (
+			<motion.section
+				className="w-[75%] sm:w-[50vw] h-auto d-flex content-start justify-items-center m-auto"
+				initial={{ opacity: 0 }}
+				animate={{
+					opacity: 1,
+					transition: {
 					duration: 0.7,
-				},
-			}}
-			exit={{
-				opacity: 0,
-				transition: {
+					},
+				}}
+				exit={{
+					opacity: 0,
+					transition: {
 					duration: 0.7,
-				},
-			}}
-		>
+					},
+				}}
+			>
 			<p className="text-center mb-5 text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl">
 				ToDo
 			</p>
-			<Form 
-				id="todoForm"
-				handleSubmit={onSubmitFormTodoEntry}
-			>
+			<Form id="todoForm" handleSubmit={onSubmitFormTodoEntry}>
 				<AddEntrySection />
 			</Form>
 
@@ -49,27 +47,23 @@ export default function TodoListComponent() {
 				{todoEntriesList?.map((entry: EntryType, i: number, array) => (
 					<motion.li
 						className="flex justify-center gap-2 border-t-2 w-full"
-						key={
-							entry.entryText +
-							Math.floor(Math.random() * 100).toString()
-						}
+						key={entry.entryText + Math.floor(Math.random() * 100).toString()}
 						variants={entriesVariant}
 						initial={
-							shouldAnimateEntries 
-								? ((i === array.length - 1 
-									? "initial" 
-									: "animate")) 
-								: {}
+						shouldAnimateEntries
+							? i === array.length - 1
+							? 'initial'
+							: 'animate'
+							: {}
 						}
 						animate={
-							shouldAnimateEntries 
-								? (i === array.length - 1 
-									? "animate" 
-									: {}
-								)
-								: {} 
+						shouldAnimateEntries
+							? i === array.length - 1
+							? 'animate'
+							: {}
+							: {}
 						}
-						onAnimationComplete={()=>setShouldAnimateEntries(false)}
+						onAnimationComplete={() => setShouldAnimateEntries(false)}
 					>
 						<EntryRowContext.Provider value={{ i, entry }}>
 							<EntryRow />
@@ -77,6 +71,10 @@ export default function TodoListComponent() {
 					</motion.li>
 				))}
 			</ul>
-		</motion.section>
-	);
+			</motion.section>
+		) 
+		: (<Spinner loadingText="Loading ToDo List..." />)
+		}
+    </>
+  );
 }

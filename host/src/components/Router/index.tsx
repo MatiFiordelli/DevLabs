@@ -26,7 +26,7 @@ export default function Router() {
 	return (
 		<>
 			{(/* wait &&  */isLoggedIn === null) 
-			?( <Spinner />)
+			?( <Spinner loadingText={"Authenticating, please wait.."} />)
 			:(
 				<Routes location={location} key={location.pathname}>
 					<Route
