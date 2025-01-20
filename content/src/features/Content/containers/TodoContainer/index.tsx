@@ -6,7 +6,7 @@ import { useErrorMessages } from "../../../../hooks/useErrorMessages";
 import { jwtDecode } from "jwt-decode";
 
 export default function TodoContainer() {
-	const [todoEntriesList, setTodoEntriesList] = useState<EntryType[]>([]);
+	const [todoEntriesList, setTodoEntriesList] = useState<EntryType[] | null>(null);
 	const [localEntry, setLocalEntry] = useState<EntryType | null>({
 		entryText: "",
 		updatedText: "",
@@ -18,7 +18,7 @@ export default function TodoContainer() {
 	const {getErrorMessage} = useErrorMessages()
 
 	const isItARepeatedEntry = (entry: string) => {
-		return todoEntriesList.some((e)=>e.entryText===entry)
+		return todoEntriesList?.some((e)=>e.entryText===entry)
 	}
 
 	const isValidLength = (entry: string = "") => {
@@ -103,7 +103,7 @@ export default function TodoContainer() {
 	};
 
 	const onEditEntry = (i: number) => {
-		const updatedState = todoEntriesList.map((entry, index) => {
+		const updatedState = todoEntriesList?.map((entry, index) => {
 			if (index === i) {
 
 				//agregar if isItARepeatedEntry!!
@@ -150,7 +150,7 @@ export default function TodoContainer() {
 			return { ...entry, isEditButtonActive: false };
 		});
 
-		setTodoEntriesList([...updatedState]);
+		if (typeof updatedState === 'object') setTodoEntriesList([...updatedState]);
 		setLocalEntry({
 			entryText: "",
 			updatedText: "",
@@ -183,7 +183,10 @@ export default function TodoContainer() {
 			})
 				.then((res)=>res.json())
 				.then((data)=>{
-					if (data.tasks.length===0) return
+					if (data.tasks.length===0) {
+						setTodoEntriesList([])
+						return
+					}
 					const tasks = data.tasks.map((t:any, i:number)=>{
 						return {
 							entryText: t.title, 

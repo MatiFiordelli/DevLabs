@@ -21,7 +21,7 @@ export default function TodoListComponent() {
 
   return (
     <>
-		{todoEntriesList.length > 0 ? (
+		{todoEntriesList !== null ? (
 			<motion.section
 				className="w-[75%] sm:w-[50vw] h-auto d-flex content-start justify-items-center m-auto"
 				initial={{ opacity: 0 }}
@@ -73,7 +73,7 @@ export default function TodoListComponent() {
 					</motion.li>
 				))}
 				
-				{isAddingNewRemoteEntry &&
+				{isAddingNewRemoteEntry && 
 					<li className="flex justify-center gap-2 border-t-2 w-full">
 						<InnerSpinner loadingText={"Adding new task.."} small={true} />
 					</li>

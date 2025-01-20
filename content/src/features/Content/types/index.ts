@@ -15,7 +15,7 @@ export interface EntryRowContextType {
 
 export interface TodoContextType {
 	onSubmitFormTodoEntry: (e: FormEvent<HTMLFormElement>) => void;
-	todoEntriesList: EntryType[];
+	todoEntriesList: EntryType[] | null;
 	onDeleteEntry: (i: number) => void;
 	onEditEntry: (i: number, inputElement?: string) => void;
 	localEntry: EntryType;

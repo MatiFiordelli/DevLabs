@@ -30,6 +30,14 @@ export default function useMic(localEntry, setLocalEntry) {
 					setTranscript(transcription.trim())
 				}
 			}
+			recognition.onerror = (event) => {
+				setisMicActive(false)
+				if (event.error === 'network'){
+					alert('There was a network error with the speech recognition')
+				} else {
+					alert("There was an error with the speech recognition")
+				}
+			}
         };
 
 		recognition?.start();
