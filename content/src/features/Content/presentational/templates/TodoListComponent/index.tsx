@@ -16,8 +16,7 @@ export default function TodoListComponent() {
     todoEntriesList,
     shouldAnimateEntries,
     setShouldAnimateEntries,
-	isAddingNewRemoteEntry,
-	
+	isAddingNewRemoteEntry,	
 	localEntry,
 	emailFromToken,
 	setIsAddingNewRemoteEntry,
