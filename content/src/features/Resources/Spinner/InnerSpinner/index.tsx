@@ -8,7 +8,7 @@ export default function InnerSpinner({
   small?: boolean;
 }) {
 
-  console.log(small)
+  
   return (
     <div className="grid place-items-center bg-transparent p-4 rounded-lg">
       {small 

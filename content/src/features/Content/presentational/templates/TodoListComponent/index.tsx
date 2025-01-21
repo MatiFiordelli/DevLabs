@@ -9,14 +9,20 @@ import { motion } from 'framer-motion';
 import { entriesVariant } from '../variants/entries.variant';
 import Spinner from '../../../../Resources/Spinner';
 import InnerSpinner from '../../../../Resources/Spinner/InnerSpinner';
+import { onSubmitFormTodoEntry } from '../../../helpers/crudFunctions';
 
 export default function TodoListComponent() {
   const {
-    onSubmitFormTodoEntry,
     todoEntriesList,
     shouldAnimateEntries,
     setShouldAnimateEntries,
-	isAddingNewRemoteEntry
+	isAddingNewRemoteEntry,
+	
+	localEntry,
+	emailFromToken,
+	setIsAddingNewRemoteEntry,
+	setTodoEntriesList,
+	setLocalEntry
   } = useCustomContext(TodoContext as Context<TodoContextType>);
 
   return (
@@ -41,7 +47,19 @@ export default function TodoListComponent() {
 			<p className="text-center mb-5 text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl">
 				ToDo
 			</p>
-			<Form id="todoForm" handleSubmit={onSubmitFormTodoEntry}>
+			<Form 
+				id="todoForm" 
+				handleSubmit={onSubmitFormTodoEntry}
+				paramsForFunctionHandler={[
+					localEntry,
+					todoEntriesList,
+					emailFromToken,
+					setIsAddingNewRemoteEntry,
+					setShouldAnimateEntries,
+					setTodoEntriesList,
+					setLocalEntry
+				]}
+			>
 				<AddEntrySection />
 			</Form>
 

@@ -3,9 +3,16 @@ import { Button } from "../../../../Resources/index";
 import { EntryRowContextType, TodoContextType } from "../../../types";
 import { useCustomContext } from "../../../hooks/useCustomContext";
 import { EntryRowContext, TodoContext } from "../../../contexts";
+import { onDeleteEntry } from "../../../helpers/crudFunctions";
 
 export default function ActionButtonsGroup() {
-	const { localEntry, setLocalEntry, onDeleteEntry } =
+	const { 
+			localEntry, 
+			setLocalEntry,
+			todoEntriesList,
+			setTodoEntriesList,
+			emailFromToken 
+		} =
 		useCustomContext(TodoContext as Context<TodoContextType>);
 
 	const { entry, i } = useCustomContext(
@@ -14,7 +21,7 @@ export default function ActionButtonsGroup() {
 
 	return (
 		<>
-			{localEntry && (
+			{localEntry && emailFromToken && (
 				<div className="flex items-center justify-end gap-2">
 					<Button
 						type="submit"
@@ -25,7 +32,12 @@ export default function ActionButtonsGroup() {
 						bgColor="#e1a3a3"
 						buttonWidth="2.5rem"
 						buttonHeight="2.5rem"
-						onClickHandler={() => onDeleteEntry(i)}
+						onClickHandler={() => onDeleteEntry(
+															i,
+															emailFromToken,
+															todoEntriesList,
+															setTodoEntriesList,
+														)}
 					/>
 					<Button
 						type="button"

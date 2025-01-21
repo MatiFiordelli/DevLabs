@@ -14,13 +14,13 @@ export interface EntryRowContextType {
 }
 
 export interface TodoContextType {
-	onSubmitFormTodoEntry: (e: FormEvent<HTMLFormElement>) => void;
+	emailFromToken: string | null;
 	todoEntriesList: EntryType[] | null;
-	onDeleteEntry: (i: number) => void;
-	onEditEntry: (i: number, inputElement?: string) => void;
+	setTodoEntriesList: Dispatch<SetStateAction<EntryType[] | null>>;
 	localEntry: EntryType;
 	setLocalEntry: Dispatch<SetStateAction<EntryType | null>>;
 	shouldAnimateEntries: boolean;
 	setShouldAnimateEntries: Dispatch<SetStateAction<boolean>>;
 	isAddingNewRemoteEntry: boolean;
+	setIsAddingNewRemoteEntry: Dispatch<SetStateAction<boolean>>;
 }
