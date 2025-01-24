@@ -76,6 +76,7 @@ General Technologies for the microfrontend
 11. PostCSS: PostCSS is a tool for transforming CSS with plugins.
 12. Jest: A testing framework for JavaScript.
 13. Testing Library: It's a set of tools for testing user interactions in web applications.
+14. Speech Recognition: A browser API that is part of the BOM, implemented to speed up tasks and improve accessibility for users.
 
 
 Session
@@ -103,6 +104,8 @@ should have only one job or responsibility. This makes the code more modular and
 but closed for modification. This means you should be able to add new functionality without changing existing code, typically achieved 
 through inheritance or interfaces.
 8. BEM:naming convention for CSS classes that helps create reusable and maintainable components in web development.
+9. Progressive Enhancement: A strategy that prioritizes basic functionality for all browsers and devices, adding enhancements for more advanced ones.
+10. Mobile First: A design approach that prioritizes the user experience on mobile devices before adapting to larger screens.
 
 ##
 
