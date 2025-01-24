@@ -16,6 +16,7 @@ export default function AddEntrySection() {
 		isMicActive,
 		toggleMicHandler,
 		clickAddButtonHandler,
+		isSpeachRecognitionSupported
 	} = useMic(localEntry, setLocalEntry);
 
 	return (
@@ -44,19 +45,20 @@ export default function AddEntrySection() {
 				id={"micInputEntry"}
 				type="button"
 				text={"🎤"}
-				title={"Speech to Text"}
+				title={isSpeachRecognitionSupported ? "Speech to Text" : "Speech recognition is not supported in this browser."}
 				textColor="#FFF"
 				textSize="small"
 				bgColor={`${isMicActive ? " #16bd21 " : "#878cf5"}`}
 				buttonWidth="2.5rem"
 				buttonHeight="2.5rem"
 				onClickHandler={toggleMicHandler}
+				isDisabled={!isSpeachRecognitionSupported}
 			/>
 			<Button
 				type="submit"
 				id={"addButton"}
 				text={"➕"}
-				title={"Add button"}
+				title={"Add entry"}
 				textColor="#FFF"
 				textSize="small"
 				bgColor="#878cf5"

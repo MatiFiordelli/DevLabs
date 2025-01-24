@@ -3,6 +3,17 @@ import { useEffect, useState } from "react";
 export default function useMic(localEntry, setLocalEntry) {
     const [isMicActive, setisMicActive] = useState(false)
 	const [transcript, setTranscript] = useState("")
+	const [isSpeachRecognitionSupported, setIsSpeechRecognitionSupported] = useState(false)
+
+	useEffect(()=>{
+		let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+		if (!SpeechRecognition) {
+			console.log('Speech recognition is not supported in this browser.');
+			setIsSpeechRecognitionSupported(false)
+		} else {
+			setIsSpeechRecognitionSupported(true)
+		}
+	},[])
 
 
     useEffect(() => {
@@ -81,6 +92,7 @@ export default function useMic(localEntry, setLocalEntry) {
         transcript, 
         onChangeHandler,
         toggleMicHandler,
-		clickAddButtonHandler
+		clickAddButtonHandler,
+		isSpeachRecognitionSupported
     }
 }
