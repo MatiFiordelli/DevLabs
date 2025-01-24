@@ -3,7 +3,7 @@ import SessionComponent from "../../presentational/organisms/SessionComponent";
 import localStore from "../../redux/store";
 import { Provider } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
-import { urls } from "../../utils/urls";
+import { endpoints } from "../../utils/endpoints";
 import { authService } from "../../services/authService";
 import { EntriesDataType } from "../../types";
 import { useDispatch } from "react-redux";
@@ -39,7 +39,7 @@ export default function SessionContainer() {
 			formData.entries()
 		) as unknown as EntriesDataType;
 
-		authService(entries, isLogIn ? urls.login : urls.signup)
+		authService(entries, isLogIn ? endpoints.login : endpoints.signup)
 			.then((data) => {
 				if (data === "OK"){ 
 					window.dispatchEvent(new CustomEvent(

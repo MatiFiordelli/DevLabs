@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import urls from "../utils/helpers/urls";
+import endpoints from "../utils/helpers/endpoints";
 
 const useVerifyToken = async () => {
 	const [isValid, setIsValid] = useState<boolean | null>(null);
 
 	const token = localStorage.getItem("token");
-	const URI = urls["verify-token"];
+	const URI = endpoints["verify-token"];
 
 	useEffect(() => {
 		

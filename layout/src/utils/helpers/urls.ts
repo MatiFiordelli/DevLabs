@@ -1,5 +1,5 @@
 const urls = {
-    "verify-token": "https://dev-labs-microservices-user-auth.vercel.app/api/auth/verify-token",
+    "linkedin": "https://www.linkedin.com/in/matiasfiordelli/",
 }
 
 export default urls
