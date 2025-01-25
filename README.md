@@ -114,7 +114,7 @@ Installation
 Follow these steps to install and run the project locally:
 
 # Note: To use this app, you will first need to run the microservices todo-crud and user-auth
-# in caso of running it locally
+# in case of running it locally
    https://github.com/MatiFiordelli/DevLabs-Microservices.git
 
 
@@ -190,6 +190,6 @@ https://www.loom.com/share/18df92ef97f34d3f9e8e2b62719e7867?sid=66742692-be95-46
 
 
 Author
-Matias Javier Fiordelli
-https://www.linkedin.com/in/matiasfiordelli/
-https://github.com/MatiFiordelli
+Matias Javier Fiordelli  
+[LinkedIn](https://www.linkedin.com/in/matiasfiordelli/)  
+[GitHub](https://github.com/MatiFiordelli)
