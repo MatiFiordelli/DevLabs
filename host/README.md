@@ -119,52 +119,78 @@ Follow these steps to install and run the project locally:
 
 
 Clone the repository:
+   ```bash
    git clone https://github.com/MatiFiordelli/DevLabs.git
+   ```
 
 Host:
 1. Change folder:
+   ```bash
    cd host
+   ```
 
 2. Install the dependencies:
+   ```bash
    npm install
+   ```
 
 3. Build the microfrontend
+   ```bash
    npm run build:dev
+   ```
 
 4. Start the server:
+   ```bash
    npm run build:start
+   ```
 
 5. Access the App: The App will be available at: 
 http://localhost:3000
 
 Layout:
 1. Change folder:
+   ```bash
    cd layout
+   ```
 
 2. Install the dependencies:
+   ```bash
    npm install
+   ```
 
 3. Build the microfrontend
+   ```bash
    npm run build:dev
+   ```
 
 4. Start the server:
+   ```bash
    npm run build:start
+   ```
 
 5. The App will be available at: 
 http://localhost:3001 (but it will be used just by the host, internally)
 
 Content:
 1. Change folder:
+   ```bash 
    cd content
+   ```
 
 2. Install the dependencies:
+   ```bash
    npm install
+   ```
 
 3. Build the microfrontend
+   ```bash
    npm run build:dev
+   ```
 
 4. Start the server:
+   ```bash 
    npm run build:start
+   ```
 
 5. The App will be available at: 
 http://localhost:3002 (but it will be used just by the host, internally)
@@ -175,9 +201,10 @@ http://localhost:3002 (but it will be used just by the host, internally)
 
 Running Tests
 This project uses Jest and Testing Library for testing. To run the tests, use the following command:
-
+```bash
 cd content
 npm test
+```
 
 
 ##
@@ -189,7 +216,7 @@ https://www.loom.com/share/18df92ef97f34d3f9e8e2b62719e7867?sid=66742692-be95-46
 ##
 
 
-Author
+Author  
 Matias Javier Fiordelli  
 [LinkedIn](https://www.linkedin.com/in/matiasfiordelli/)  
 [GitHub](https://github.com/MatiFiordelli)

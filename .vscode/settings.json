@@ -9,6 +9,6 @@
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
-	"editor.renderIndentGuides": true,
-	"editor.tabSize": 4
+	"editor.tabSize": 4,
+	"editor.guides.indentation": true
 }
