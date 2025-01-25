@@ -12,7 +12,7 @@ module.exports = (_, argv) => ({
 		publicPath:
 			argv.mode === "development" 
 				? "http://localhost:3000/"
-				: "https://dev-labs-ten.vercel.app/",
+				: "https://dev-labs-host.vercel.app/",
 	},
 
 	resolve: {
@@ -72,8 +72,17 @@ module.exports = (_, argv) => ({
 			name: "host",
 			filename: "remoteEntry.js",
 			remotes: {
-				layout: "layout@http://localhost:3001/remoteEntry.js",
-				content: "content@http://localhost:3002/remoteEntry.js",
+				//layout: "layout@http://localhost:3001/remoteEntry.js",
+				layout: 
+					argv.mode === "development" 
+						? "layout@http://localhost:3001/remoteEntry.js"
+						: "layout@https://dev-labs-layout.vercel.app/remoteEntry.js",
+
+				//content: "content@http://localhost:3002/remoteEntry.js",
+				content:
+					argv.mode === "development" 
+						? "content@http://localhost:3002/remoteEntry.js"
+						: "content@https://dev-labs-content.vercel.app/remoteEntry.js",
 			},
 			exposes: {
 				"./pathRoutes": "./src/utils/helpers/pathRoutes1.ts",

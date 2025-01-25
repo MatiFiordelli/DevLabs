@@ -8,91 +8,98 @@ const deps = require("./package.json").dependencies;
 const printCompilationMessage = require('./compilation.config.js');
 
 module.exports = (_, argv) => ({
-  output: {
-    publicPath: "http://localhost:3001/",
-  },
+	output: {
+		publicPath:
+			argv.mode === "development"
+				? "http://localhost:3001/"
+				: "https://dev-labs-layout.vercel.app/",
+	},
 
-  resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
-  },
+	resolve: {
+		extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+	},
 
-  devServer: {
-    port: 3001,
-    historyApiFallback: true,
-    watchFiles: [path.resolve(__dirname, 'src')],
-    onListening: function (devServer) {
-      const port = devServer.server.address().port
+	devServer: {
+		port: 3001,
+		historyApiFallback: true,
+		watchFiles: [path.resolve(__dirname, 'src')],
+		onListening: function (devServer) {
+			const port = devServer.server.address().port
 
-      printCompilationMessage('compiling', port)
+			printCompilationMessage('compiling', port)
 
-      devServer.compiler.hooks.done.tap('OutputMessagePlugin', (stats) => {
-        setImmediate(() => {
-          if (stats.hasErrors()) {
-            printCompilationMessage('failure', port)
-          } else {
-            printCompilationMessage('success', port)
-          }
-        })
-      })
-    }
-  },
+			devServer.compiler.hooks.done.tap('OutputMessagePlugin', (stats) => {
+				setImmediate(() => {
+					if (stats.hasErrors()) {
+						printCompilationMessage('failure', port)
+					} else {
+						printCompilationMessage('success', port)
+					}
+				})
+			})
+		}
+	},
 
-  module: {
-    rules: [
-      {
-        test: /\.m?js/,
-        type: "javascript/auto",
-        resolve: {
-          fullySpecified: false,
-        },
-      },
-      {
-        test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-      },
-      {
-        test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
-      { 
-        test: /\.svg$/, 
-        issuer: /\.[js|ts]x?$/,
-        use: ["@svgr/webpack", "url-loader"], 
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.m?js/,
+				type: "javascript/auto",
+				resolve: {
+					fullySpecified: false,
+				},
+			},
+			{
+				test: /\.(css|s[ac]ss)$/i,
+				use: ["style-loader", "css-loader", "postcss-loader"],
+			},
+			{
+				test: /\.(ts|tsx|js|jsx)$/,
+				exclude: /node_modules/,
+				use: {
+					loader: "babel-loader",
+				},
+			},
+			{
+				test: /\.svg$/,
+				issuer: /\.[js|ts]x?$/,
+				use: ["@svgr/webpack", "url-loader"],
+			},
+		],
+	},
 
-  plugins: [
-    new ModuleFederationPlugin({
-      name: "layout",
-      filename: "remoteEntry.js",
-      remotes: {
-        host: "host@http://localhost:3000/remoteEntry.js",
-      },
-      exposes: {
-        "./Layout": "./src/components/Layout/index.tsx",
-      },
-      shared: {
-        ...deps,
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
-        "react-router-dom": {
-          singleton: true,
-        }
-      },
-    }),
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-    }),
-    new Dotenv()
-  ],
+	plugins: [
+		new ModuleFederationPlugin({
+			name: "layout",
+			filename: "remoteEntry.js",
+			remotes: {
+				//host: "host@http://localhost:3000/remoteEntry.js",
+				host: 
+					argv.mode === "development"
+						? "host@http://localhost:3000/remoteEntry.js"
+						: "host@https://dev-labs-host.vercel.app/remoteEntry.js",
+			},
+			exposes: {
+				"./Layout": "./src/components/Layout/index.tsx",
+			},
+			shared: {
+				...deps,
+				react: {
+					singleton: true,
+					requiredVersion: deps.react,
+				},
+				"react-dom": {
+					singleton: true,
+					requiredVersion: deps["react-dom"],
+				},
+				"react-router-dom": {
+					singleton: true,
+				}
+			},
+		}),
+		new HtmlWebPackPlugin({
+			template: "./src/index.html",
+		}),
+		new Dotenv()
+	],
 });

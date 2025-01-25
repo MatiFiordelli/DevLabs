@@ -8,103 +8,111 @@ const deps = require("./package.json").dependencies;
 const printCompilationMessage = require('./compilation.config.js');
 
 module.exports = (_, argv) => ({
-  output: {
-    publicPath: "http://localhost:3002/",
-  },
+	output: {
+		//publicPath: "http://localhost:3002/",
+		publicPath:
+			argv.mode === "development"
+				? "http://localhost:3002/"
+				: "https://dev-labs-content.vercel.app/",
+	},
 
-  resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
-  },
+	resolve: {
+		extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+	},
 
-  devServer: {
-    static: {
-      directory: path.join(__dirname, "dist"),
-    },
-    hot: true,
-    port: 3002,
-    historyApiFallback: true,
-    watchFiles: [path.resolve(__dirname, 'src')],
-    onListening: function (devServer) {
-      const port = devServer.server.address().port
+	devServer: {
+		static: {
+			directory: path.join(__dirname, "dist"),
+		},
+		hot: true,
+		port: 3002,
+		historyApiFallback: true,
+		watchFiles: [path.resolve(__dirname, 'src')],
+		onListening: function (devServer) {
+			const port = devServer.server.address().port
 
-      printCompilationMessage('compiling', port)
+			printCompilationMessage('compiling', port)
 
-      devServer.compiler.hooks.done.tap('OutputMessagePlugin', (stats) => {
-        setImmediate(() => {
-          if (stats.hasErrors()) {
-            printCompilationMessage('failure', port)
-          } else {
-            printCompilationMessage('success', port)
-          }
-        })
-      })
-    }
-  },
+			devServer.compiler.hooks.done.tap('OutputMessagePlugin', (stats) => {
+				setImmediate(() => {
+					if (stats.hasErrors()) {
+						printCompilationMessage('failure', port)
+					} else {
+						printCompilationMessage('success', port)
+					}
+				})
+			})
+		}
+	},
 
-  module: {
-    rules: [
-      {
-        test: /\.m?js/,
-        type: "javascript/auto",
-        resolve: {
-          fullySpecified: false,
-        },
-      },
-      {
-        test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-      },
-      {
-        test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.m?js/,
+				type: "javascript/auto",
+				resolve: {
+					fullySpecified: false,
+				},
+			},
+			{
+				test: /\.(css|s[ac]ss)$/i,
+				use: ["style-loader", "css-loader", "postcss-loader"],
+			},
+			{
+				test: /\.(ts|tsx|js|jsx)$/,
+				exclude: /node_modules/,
+				use: {
+					loader: "babel-loader",
+				},
+			},
+		],
+	},
 
-  plugins: [
-    new ModuleFederationPlugin({
-      name: "content",
-      filename: "remoteEntry.js",
-      remotes: {
-        host: "host@http://localhost:3000/remoteEntry.js"
-      },
-      exposes: {
-        "./Content": "./src/features/Content/containers/TodoContainer/index.tsx",
-        "./Session": "./src/features/Session/containers/SessionContainer/index.tsx",
-      },
-      shared: {
-        ...deps,
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
-        "react-router-dom": {
-          singleton: true,
-        },
-        tailwindcss: {
-          singleton: true,
-        },
-        "framer-motion": {
-          singleton: true
-        },
-        "redux": {
-          singleton: true,
-        },
-        "react-redux": {
-          singleton: true,
-        },
-      },
-    }),
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-    }),
-    new Dotenv()
-  ],
+	plugins: [
+		new ModuleFederationPlugin({
+			name: "content",
+			filename: "remoteEntry.js",
+			remotes: {
+				//host: "host@http://localhost:3000/remoteEntry.js"
+				host:
+					argv.mode === "development"
+						? "host@http://localhost:3000/remoteEntry.js"
+						: "host@https://dev-labs-host.vercel.app/remoteEntry.js",
+			},
+			exposes: {
+				"./Content": "./src/features/Content/containers/TodoContainer/index.tsx",
+				"./Session": "./src/features/Session/containers/SessionContainer/index.tsx",
+			},
+			shared: {
+				...deps,
+				react: {
+					singleton: true,
+					requiredVersion: deps.react,
+				},
+				"react-dom": {
+					singleton: true,
+					requiredVersion: deps["react-dom"],
+				},
+				"react-router-dom": {
+					singleton: true,
+				},
+				tailwindcss: {
+					singleton: true,
+				},
+				"framer-motion": {
+					singleton: true
+				},
+				"redux": {
+					singleton: true,
+				},
+				"react-redux": {
+					singleton: true,
+				},
+			},
+		}),
+		new HtmlWebPackPlugin({
+			template: "./src/index.html",
+		}),
+		new Dotenv()
+	],
 });
