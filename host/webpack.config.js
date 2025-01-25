@@ -73,7 +73,7 @@ module.exports = (_, argv) => ({
         content: "content@http://localhost:3002/remoteEntry.js",
       },
       exposes: {
-        "./pathRoutes": "./src/utils/helpers/pathRoutes.ts",
+        "./pathRoutes": "./src/utils/helpers/pathRoutes1.ts",
         "./useVerifyToken": "./src/hooks/useVerifyToken.ts",
       },
       shared: {

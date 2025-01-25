@@ -1,6 +1,6 @@
 import React, { lazy, useEffect, useState } from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
-import { pathRoutes } from "../../utils/helpers/pathRoutes";
+import { pathRoutes } from "../../utils/helpers/pathRoutes1";
 import Error404 from "../Error404";
 import { useSelector } from "react-redux";
 import Spinner from "../Resources/Spinner";

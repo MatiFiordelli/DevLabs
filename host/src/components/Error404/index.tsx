@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { pathRoutes } from "../../utils/helpers/pathRoutes";
+import { pathRoutes } from "../../utils/helpers/pathRoutes1";
 
 const NotFound: React.FC = () => {
 	return (
