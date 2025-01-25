@@ -161,10 +161,6 @@ export const onSubmitFormTodoEntry = (
             )
         ) {
             if (todoEntriesList && localEntry?.entryText) {
-                //deployar front
-                //acordarse de copiar el readme para cada microfrontend
-                //ponerle font-size mas grande a los botones en big resolutions sin fondo sin borde al btn
-				//probarla
 
                 setIsAddingNewRemoteEntry(true);
                 fetch(`${endpoints['url-base']}`, {
