@@ -6,7 +6,10 @@
 		},
 		{
 			"src": "/signup",
-			"dest": "/index.html"
+			"status": 302,
+			"headers": {
+				"Location": "https://www.google.com"
+			}
 		}
 	]
 }
