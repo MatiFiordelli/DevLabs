@@ -1,6 +1,10 @@
 {
 	"routes": [
 		{
+			"src": "/borrar",
+			"dest": "/index.html"
+		},
+		{
 			"src": "/login",
 			"dest": "/index.html"
 		},
