@@ -1,16 +1,12 @@
 {
 	"routes": [
 		{
-			"src": "/borrar",
+			"src": "/signup",
 			"dest": "/index.html"
 		},
 		{
 			"src": "/login",
 			"dest": "/index.html"
-		},
-		{
-			"src": "/signup",
-			"dest": "/index.html"
-		}  
+		} 
 	]
 }
