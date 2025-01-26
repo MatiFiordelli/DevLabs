@@ -1,8 +1,12 @@
 {
 	"routes": [
 		{
+			"src": "/login",
+			"dest": "/index.html"
+		},
+		{
 			"src": "/(.*)",
 			"dest": "/index.html"
-		} 
+		}
 	]
 }
